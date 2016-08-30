@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<!--优先使用最新版本 IE 和 Chrome-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!--360 使用Google Chrome Frame-->
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<!-- 禁止百度转码 -->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<!--状态栏的背景颜色-->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<title>网页计算器|Demos 代码演示、代码片段 - 读你 | 这世间唯有梦想和好姑娘不可辜负!</title>
+		<meta name="Generator" contect="HBuild,WebStorm">
+		<meta name="Keyword" content="FlexBox,animation,iconFont,网页计算器,代码演示,代码片段,HTML5,CSS3,JavaScript,jQuery,Bootstrap">
+		<meta name="Author" content="dunizb,dunizb@foxmail.com">
+		<meta name="website" content="http://www.mybry.com">
+		<meta name="Description" content="网页计算器,Demos 代码演示、代码片段 - 读你 | 这世间唯有梦想和好姑娘不可辜负!">
+		<meta http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 50)">
+		<meta http-equiv="Page-Exit" contect="revealTrans(duration=20，transtion=6)">
+		<link rel="stylesheet" href="css/calc.css?t=20160810215148" />
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="calc" class="calc">
+				<div id="top">
+					<div id="win-tool">
+						<span id="close" title="关闭" data-ico="✖">&nbsp;</span>
+						<span id="max" title="最大化" data-ico="口">&nbsp;</span>
+						<span id="resize" title="最小化" data-ico="◎"><i class="iconfont change">&#xe612;</i></span>
+						<a id="skin" href="calc-gj-v5.0.html" title="换肤"><i class="iconfont skin">&#xe602;</i></a>
+						<!--<a id="news" href="news.html" title="新闻"><i class="iconfont news">&#xe60a;</i></a>-->
+						<a id="history" href="javascript:void(0);" title="历史记录"><i id="h" class="iconfont history">&#xe60d;</i></a>
+						<a id="about" href="javascript:;" title="关于"><i id="au" class="iconfont about">&#xe610;</i></a>
+					</div>
+					<div id="result">
+						<div id="express"></div>
+						<div id="res">0</div>
+					</div>
+				</div>
+				<div id="bottom">
+					<div class="row">
+						<span id="reset" data-number="C">CE</span>
+						<span id="remove" data-number="←">←</span>
+						<span data-number="%">%</span>
+						<span data-number="/" class="tool chu">÷</span>
+					</div>
+					<div class="row">
+						<span data-number="7">7</span>
+						<span data-number="8">8</span>
+						<span data-number="9">9</span>
+						<span data-number="*" class="tool cheng">×</span>
+					</div>
+					<div class="row">
+						<span data-number="4">4</span>
+						<span data-number="5">5</span>
+						<span data-number="6">6</span>
+						<span data-number="-" class="tool jiang">ㅡ</span>
+					</div>
+					<div class="row">
+						<span data-number="1">1</span>
+						<span data-number="2">2</span>
+						<span data-number="3">3</span>
+						<span data-number="+" class="tool add">＋</span>
+					</div>
+					<div class="row">
+						<span data-number="0" class="zero">0</span>
+						<span data-number="." class="dian">.</span>
+						<span id="equals" data-number="=" class="tool eq">＝</span>
+					</div>
+				</div>
+
+				<div id="historyBox">
+					<div class="con">
+						<ul></ul>
+					</div>
+					<div class="remove">
+						<a href="javascript:;" title="清空历史记录"><i class="iconfont del">&#xe613;</i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--移动端拨号功能-->
+		<a href="#" id="telPhone" data-flag = "" ></a>
+
+		<script src="js/zepto/zepto.min.js"></script>
+		<script src="js/zepto/fx.js"></script>
+		<script src="js/zepto/touch.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/calc.js?t=20160810215148"></script>
+	</body>
+
+</html>

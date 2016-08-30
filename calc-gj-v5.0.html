@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>计算器</title>
+    <style type="text/css">
+        html,body {
+            height: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #000;
+            font: 14px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+        
+		.iconfont.skins{
+			position: absolute;
+		    right: 50px;
+		    top: 0;
+		    color: #fff;
+		    text-decoration: none;
+		    font-size: 32px;
+    		line-height: 49px;
+    		font-style: normal;
+		}
+        #total {
+            width: 100%;
+            height: 100%;
+            min-width: 300px;
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .calc {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            background-color: #333;
+            overflow: hidden;
+            /*border: 5px solid transparent;*/
+        }
+        header {
+            width: 100%;
+            height: 30%;
+            position: relative;
+            /*padding:70px 10px 0 0;*/
+            box-sizing: border-box;
+            box-shadow: 0 0 10px #000 inset,0 0 15px #333;
+        }
+        header input {
+            height: 30px;
+            border:none;
+            padding:0 5px 0 0;
+            margin:0;
+            position: absolute;
+            right: 0;
+            bottom:75px;
+            font-size: 30px;
+            font-weight: 700;
+            /*font-family: "方正兰亭超细黑简体","Helvetica Neue", Helvetica, Arial, sans-serif;*/
+            background-color: transparent;
+            text-align: right;
+            color: #fff;
+            text-shadow: 0 2px 1px rgba(0,0,0,0.5);
+        }
+        header #content {
+            height: 60px;
+            font-size: 60px;
+            bottom: 10px;
+            right: 0;
+        }
+        header .weather {
+            color: #fff;
+            padding: 10px 0 0 10px;
+        }
+        header .history {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            right:10px;
+            top:10px;
+            cursor: pointer;
+            box-shadow: 0 2px 1px rgba(0,0,0,0.5);
+            /*background-color: #34C749;*/
+        }
+        .minute {
+            height: 10px;
+            width: 2px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -1px;
+            margin-top: -10px;
+            transform-origin: bottom center;
+            animation: move 3600s steps(60) infinite;
+        }
+        .second {
+            height: 12px;
+            width: 2px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -1px;
+            margin-top: -12px;
+            transform-origin: bottom center;
+            animation: move 60s steps(60) infinite;
+        }
+        main {
+            width: 100%;
+            height: 69%;
+        }
+        main ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.7%;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        main ul li {
+            width: 25%;
+            height: 20%;
+            font-size: 26px;
+            float: left;
+            color: #fff;
+            text-align: center;
+            border-left:1px solid #000;
+            border-top:1px solid #000;
+            box-sizing: border-box;
+            text-shadow: 0 2px 1px rgba(0,0,0,0.2);
+        }
+        main ul li:nth-last-child(-n+3) {
+            border-bottom:1px solid #000;
+        }
+        main ul li:nth-child(2) a {
+            width: 72%;
+            height: 72%;
+            display: inline-block;
+        }
+        /*使用伪元素使文字居中*/
+        main ul li:before {
+            display: inline-block;
+            content: "";
+            height:100%;
+            vertical-align:middle;
+        }
+        #calc main ul li:active {
+            box-shadow: 0 0px 15px #999 inset;
+            background-color: #fff;
+            color: #000;
+        }
+        main ul li:nth-child(4n) {
+            background-color: #F5923E;
+            color: #fff;
+        }
+        main ul li:nth-last-child(1) {
+            background-color: #F5923E;
+            color: #fff;
+        }
+        .zero {
+            width: 50%;
+            text-align: left;
+            padding-left:31px;
+            box-sizing: border-box;
+        }
+        .save {
+            width: 100%;
+            height: 70%;
+            position: absolute;
+            bottom: -70%;
+            background-color: #333;
+            border-radius: 3px;
+            color: #fff;
+            padding:0 10px;
+            box-sizing: border-box;
+            text-shadow: 0 2px 1px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+        .save h3 {
+            border: 1px solid #fff;
+            border-radius: 3px;
+            text-indent: 10px;
+            line-height: 30px;
+            margin: 10px 0 0 0;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5) ;
+        }
+        .save .hisList {
+            height: 70%;
+            width: 100%;
+        }
+        .save ul {
+            padding: 0;
+            margin: 20px 10px;
+            list-style: none;
+            height: 90%;
+            overflow-y: auto;
+        }
+        .save ul li {
+            height: 40px;
+            line-height: 40px;
+            padding-bottom: 10px;
+            font-size: 36px;
+            font-family: "方正兰亭超细黑简体";
+            text-align: right;
+        }
+        .save .clear {
+            background-color: #333;
+            border:none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 3px;
+            box-shadow: 0 0 5px #000;
+        }
+        @keyframes move {
+            0% {
+                transform: rotate3d(0,0,1,0deg);
+            }
+            100% {
+                transform: rotate3d(0,0,1,360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="total">
+<div class="calc" id="calc">
+    <header>
+        <div class="weather">
+            <!--<div class="temp"></div>-->
+            <img class="day" src="" alt=""/>
+            <img class="night" src="" alt=""/>
+        </div>
+        <a href="index.html"><i class="iconfont skins">◑</i></a>
+        <div class="history">
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+        <input id="sum" type="text" value="" readonly>
+        <input id="content" type="text" value="0" readonly>
+    </header>
+    <main>
+        <ul id="list">
+            <li style="color: red">AC</li>
+            <li><a class="tel" style="color: #44c522;text-decoration: none" href="#">S</a></li>
+            <li class="sign">%</li>
+            <li class="sign">/</li>
+            <li class="num">7</li>
+            <li class="num">8</li>
+            <li class="num">9</li>
+            <li class="sign">*</li>
+            <li class="num">4</li>
+            <li class="num">5</li>
+            <li class="num">6</li>
+            <li class="sign">-</li>
+            <li class="num">1</li>
+            <li class="num">2</li>
+            <li class="num">3</li>
+            <li class="sign">+</li>
+            <li class="zero num">0</li>
+            <li class="num">.</li>
+            <li>=</li>
+        </ul>
+    </main>
+</div>
+<div class="save">
+    <h3>历史记录</h3>
+    <div class="hisList"></div>
+</div>
+    </div>
+<script>
+    window.itcast = {};
+//解决移动端click事件延迟问题
+    itcast.tap = function(dom,callback){
+        if(!dom || typeof dom != 'object' ) return false;
+        /*基本的判断*/
+        var startTime = 0;
+        var isMove = false;
+        dom.addEventListener('touchstart',function(e){
+            startTime = Date.now();
+        });
+        dom.addEventListener('touchmove',function(e){
+            isMove = true;
+        });
+        dom.addEventListener('touchend',function(e){
+            if((Date.now()-startTime)<300 && !isMove){
+                callback && callback(e);
+            }
+            /*重置参数*/
+            startTime = 0;
+            isMove = false;
+        });
+    }
+</script>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            type:'get',
+            url:'http://api.map.baidu.com/telematics/v3/weather?output=json&ak=0A5bc3c4fb543c8f9bc54b77bc155724&location=%E4%B8%8A%E6%B5%B7',
+            dataType:'jsonp',
+            success:function(data){
+                console.log(data.results[0].weather_data[0]);
+                /*模版渲染*/
+                var html = data.results[0].weather_data[0].date;
+                var day = data.results[0].weather_data[0].dayPictureUrl;
+                var night = data.results[0].weather_data[0].nightPictureUrl;
+                $('.temp').html(html);
+                $('.day').attr('src',day);
+                $('.night').attr('src',night);
+
+            }
+        });
+    });
+</script>
+<script>
+    //计算功能实现
+    var list = document.getElementById("list");
+    //大显示屏
+    var content = document.getElementById("content");
+    //小显示屏
+    var sum = document.getElementById("sum");
+    //获取数字部分
+    var nums = document.getElementsByClassName("num");
+    //获取符号部分
+    var signs = document.getElementsByClassName("sign");
+    var lis = list.children;
+    var calc = document.getElementById("calc");
+    var save = calc.nextElementSibling;
+    var title = save.querySelector("h3");
+    var hisList = save.querySelector(".hisList");
+    //公式
+    var formula = "";
+    var str = "";
+    //记录上一次触发的事件是否是等号运算
+    var equal = false;
+    //数字部分显示
+    for(var i=0;i<nums.length;i++){
+        var num = nums[i];
+        itcast.tap(num, function (e) {
+            //如果上一次是等号运算，清空formula
+            if(equal){
+                formula = "";
+            }
+            //解决eval函数0开头时的bug
+            if(e.target.innerHTML==="0"){
+                var c = formula.charAt(formula.length-1);
+                if(c==="+"||c==="-"||c==="*"||c==="/"||c==="%"){
+                    return false;
+                }else if(str===""){
+                    return false;
+                }else{
+                    str += e.target.innerHTML;
+                    formula += e.target.innerHTML;
+                    content.setAttribute("value",str);
+                    sum.setAttribute("value",formula);
+                }
+            }else if(e.target.innerHTML==="."){
+                if(str===""){
+                    str = "0" + e.target.innerHTML;
+                    formula += str;
+                }
+
+                if(formula.indexOf(".")== -1){
+                    str += e.target.innerHTML;
+                    formula += e.target.innerHTML;
+                }
+                content.setAttribute("value",str);
+                sum.setAttribute("value",formula);
+
+            }else{
+                str += e.target.innerHTML;
+                formula += e.target.innerHTML;
+                content.setAttribute("value",str);
+                sum.setAttribute("value",formula);
+            }
+            equal = false;
+
+        });
+    }
+    //运算符部分
+    for(var i=0;i<signs.length;i++){
+        var sign = signs[i];
+        itcast.tap(sign, function (e) {
+            //直接输入运算符时的bug
+            if(formula===""){
+                formula = "0"+e.target.innerHTML;
+            }
+            var c = formula.charAt(formula.length-1);
+            //判断最后一位是不是运算符，是的话就替换
+            if(c==="+"||c==="-"||c==="*"||c==="/"||c==="%"){
+                formula = formula.substring(0,formula.length-1);
+                formula += e.target.innerHTML;
+                sum.setAttribute("value",formula);
+            }else if(c==="."){
+                return false;
+            }else{
+                //计算出结果
+                content.setAttribute("value",eval(formula));
+//               formula = String(eval(formula));
+                formula += e.target.innerHTML;
+                sum.setAttribute("value",formula);
+                str = "";
+            }
+            equal = false;
+        });
+    }
+
+    //AC清除还原功能
+    lis[0].onclick = function () {
+        str = "";
+        formula = "";
+        content.setAttribute("value","0");
+        sum.setAttribute("value","0");
+        equal = false;
+    }
+    //S键拨号功能
+    var tel = document.querySelector(".tel");
+    tel.onclick = function () {
+        tel.href = "tel:"+str;
+    }
+
+    //公式存储功能
+    var saveHeight = save.offsetHeight;
+    var isMove = false;
+    var his = document.querySelector(".history");
+    his.onclick = function () {
+        if(!isMove){
+            addTransition();
+            setTranslateY(-saveHeight);
+            if(datas.length==0){
+                hisList.innerHTML = "尚无历史记录";
+            }else{
+                hisList.innerHTML = "";
+                //刷新列表
+                createLi(hisList);
+                var btn = document.createElement("button");
+                btn.className = "clear";
+                hisList.appendChild(btn);
+                btn.innerText = "清空";
+                btn.onclick = function () {
+                    datas = [];
+                    hisList.innerHTML = "尚无历史记录";
+                }
+            }
+            isMove = true;
+        }else{
+            addTransition();
+            setTranslateY(0);
+            isMove = false;
+        }
+    }
+    //滑动手势移除save
+    var startY = 0;
+    var moveY = 0;
+    var distanceY = 0;
+    //公用方法
+    //过渡
+    var addTransition = function () {
+        save.style.transition = "all 0.5s";
+        save.style.webkitTransition = "all 0.5s";
+    }
+    //移除过渡
+    var removeTransition = function () {
+        save.style.transition = "none";
+        save.style.webkitTransition = "none";
+    }
+    //移动
+    var setTranslateY = function (translateY) {
+        save.style.transform = "translate3d(0,"+translateY+"px,0)";
+        save.style.webkitTransform = "translate3d(0,"+translateY+"px,0)";
+    }
+
+    title.addEventListener('touchstart', function (e) {
+        startY = e.touches[0].clientY;
+    });
+    title.addEventListener('touchmove', function (e) {
+        moveY = e.touches[0].clientY;
+        distanceY = moveY-startY;
+        removeTransition();
+        if(distanceY<=0){
+            return false;
+        }else{
+            setTranslateY(-saveHeight+distanceY);
+        }
+    });
+    title.addEventListener('touchend', function (e) {
+        if(distanceY<(saveHeight/3)){
+            addTransition();
+            setTranslateY(-saveHeight);
+        }else{
+            addTransition();
+            setTranslateY(0);
+            isMove = false;
+        }
+        startY = 0;
+        moveY = 0;
+        distanceY = 0;
+    });
+
+    //等号运算
+    var datas = [];
+    itcast.tap(list.lastElementChild, function () {
+        //直接输入运算符时的bug
+        if(formula===""){
+            return;
+        }
+        var c = formula.charAt(formula.length-1);
+        if(c==="+"||c==="-"||c==="*"||c==="/"||c==="%"){
+            return;
+        }
+        //历史记录
+        datas[datas.length] = formula;
+
+        content.setAttribute("value",eval(formula));
+        sum.setAttribute("value","");
+        formula = String(eval(formula));
+        str = "";
+        equal = true;
+    });
+
+    //        动态创建历史记录
+    function createLi(Dom){
+        //动态创建元素-ul    仅仅是在内存中创建了一个ul的对象
+        var ul = document.createElement("ul");
+        //把ul对象添加到页面上显示
+        Dom.appendChild(ul);
+
+
+        for(var i = datas.length-1; i >= 0; i--) {
+            var data = datas[i];
+            //创建li
+            var li = document.createElement("li");
+            //把li添加到ul中
+            ul.appendChild(li);
+            li.innerText = data;
+//        setInnerText(li, data);
+
+            li.onclick = function (e) {
+                formula = this.innerHTML;
+                sum.setAttribute("value",formula);
+                e.stopPropagation();
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

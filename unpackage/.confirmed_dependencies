@@ -1,0 +1,37 @@
+{
+	"index.html": {
+		"href": "index.html",
+		"resources": [
+			"css/calc.css",
+			"js/common.js",
+			"js/calc.js",
+			"images/delete1.png",
+			"js/zepto/event.js",
+			"js/zepto/zepto.min.js",
+			"js/zepto/fx.js",
+			"js/zepto/touch.js",
+			"font/iconfont.woff",
+			"news.html",
+			"calc-gj-v5.0.html"
+		],
+		"refer": [
+			"news.html",
+			"calc-gj-v5.0.html"
+		],
+		"priority": 0
+	},
+	"calc-gj-v5.0.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"index.html"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"news.html": {
+		"resources": [
+			"css/calc.css"
+		]
+	}
+}

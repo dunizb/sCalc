@@ -1,0 +1,377 @@
+@charset "UTF-8";
+
+@font-face {font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:1.9rem;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+}
+
+
+html{
+    height: 100%;
+    font-size: 62.5%;
+}
+.maxhtml {
+	font-size: 82.5%;
+}
+body{
+	height: 100%;
+    min-width: 300px;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-size: 62.5%;
+}
+ul {padding: 0;margin: 0;}
+
+
+#container {
+    overflow: hidden;
+    padding: 5px 5px;
+}
+.calc {
+    width: 300px;
+    max-width: 600px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    height: 100%;
+    -webkit-transition: all .8s;
+    transition: all .5s;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+}
+.flexbox {
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.maxCalc {
+	width: 60%;
+	height: 100%;
+}
+
+#top {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 30%;
+    /*text-shadow: 0 2px 1px rgba(0,0,0,0.2);*/
+}
+#win-tool {
+    background-color: #ccc;
+    min-height: 35px;
+    position: relative;
+    padding: 7px 8px 0 8px;
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+}
+#win-tool span {
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;    
+    border-radius: 50%;
+    margin-right: 3px;
+    text-align: center;
+    display: inline-block;
+    /*color: #fff;
+    font-weight: bold;*/
+    cursor: default;
+    position: absolute;
+    top: 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+#close {
+    background-color: #FC5652;
+    left: 8px;
+}
+#max {
+    background-color: #FDBC40;
+    left: 34px;
+}
+#resize {
+    /*background-color: #34C749;*/
+   font-size: 3rem;
+   left: 60px;
+   display: none !important;
+}
+#win-tool a {
+    background: hsl(0, 0%, 80%);
+    display: inline-block;
+    width: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    /*line-height: 1.9rem;*/
+    color: inherit;
+    text-decoration: none;
+    /*font-size: 1.9rem;*/
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin-left: .5rem;    
+}
+#win-tool a:hover,
+#win-tool a:active {
+	color: red;
+}
+.iconfont.history,
+.iconfont.about,
+.iconfont.change,
+.iconfont.skin{
+	color: hsl(0, 0%, 30%);
+}
+.iconfont.news {
+	color: #F5923E;
+}
+#result {
+    min-height: 90px;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0, 0%, 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #FFF;
+    overflow: auto;
+    box-sizing: border-box;
+    /*text-shadow: 0 2px 1px rgba(0,0,0,0.3);*/
+    text-align: right;
+}
+#result > #express {
+    font-size: 2rem;
+}
+#result div {
+	padding: 0 5px;
+	box-sizing: border-box;
+}
+#result > #res {
+    font-size: 4.5rem;
+    font-weight: 600;
+    width: 100%;
+}
+#bottom {
+    font-weight: 600;
+    width: 100%;
+    height: 70%;
+    /*text-shadow: 0 2px 1px rgba(0,0,0,0.3);*/
+}
+#bottom .row {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+}
+.mb{margin-bottom: 0 !important;}
+#bottom .row span:first-child {
+    border-left: 0;
+}
+#bottom .row:last-child span {
+    border-bottom: 0;
+}
+#bottom .row span{
+    height: 100%;
+    width: 25%;
+    background-color: #F2F2F2;
+    border: 1px solid #fff;
+    border-right: 0;
+    color:hsl(0, 17%, 20%);
+   	font-size: 2rem;
+   	line-height: 5rem;
+    cursor: default;
+    -webkit-user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#win-tool span:active,
+#bottom .row span:active,
+#bottom .row span.tool:active{
+    background-color: red;
+    color: #fff;
+}
+#bottom .row span.tool {
+    background-color: #F5923E;
+    color: #fff;
+}
+#bottom .row span.cheng,
+#bottom .row span.chu,
+#bottom .row span.add,
+#bottom .row span.eq {
+    font-size: 2.5rem;
+}
+#bottom .row span.jiang {
+    font-size: 1.9rem;
+}
+#bottom .row span.zero {
+    width: 50.4%;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 11%;
+}
+
+
+/************** 历史记录 *****************/
+#historyBox {
+    background: hsl(0, 0%, 95%);
+    width: 100%;
+    height: 71%;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0px 0px 10px #000;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: translateY(102%);
+    transform: translateY(102%);
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+}
+#historyBox .con {
+    height: 91%;
+    overflow-y: auto;
+}
+#historyBox .remove {
+	height: 28px;
+    background: hsl(0, 0%, 88%);
+    text-align: right;
+    box-sizing: border-box;
+    border-top: 1px solid transparent;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+#historyBox .remove a{
+	color: inherit;
+    text-decoration: none;
+    padding-right: 5px;
+}
+/*#historyBox .remove .icon_del {
+    display: inline-block;
+    width: 35px;
+    height: 28px;
+    background: url("../images/delete1.png") no-repeat;
+    box-sizing: border-box;
+    background-position: center center;
+}
+#historyBox .remove .icon_del:hover {
+    background-color: #ccc;
+}
+#historyBox .remove .icon_del:active{
+	background-color: red;
+}*/
+#historyBox ul {
+    padding: 0 5px 0 5px;
+    color: hsl(0, 0%, 50%);
+    font-size: 1rem;
+}
+#historyBox ul li {
+    height: 45px;
+    text-align: right;
+    line-height: 45px;
+    font-size: 2.2rem;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+    background: hsl(0, 0%, 95%);
+    color: #000;
+    overflow: auto;
+}
+#historyBox ul li:hover {
+    background:hsl(0, 0%, 88%);
+}
+
+#updateApp {
+	background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    display: none;
+}
+#downloadApp {
+	
+}
+
+.miniCalc{
+	width: 200px;
+	height: 200px;
+	font-size: 40%;
+}
+
+/*小屏*/
+@media (max-width: 500px){
+    html {
+    	font-size: 80%;
+    	font-family:Helvetica;
+    }
+    .iconfont {font-size: 1.6rem;}
+    #container {
+        height: 100%;
+        padding: 0;
+    }
+    .calc {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border-radius: 0;
+    }
+    #close,#max {display: none !important;}
+    #win-tool a {font-size: 1rem;line-height: 1.9rem;}
+    #resize {
+    	left: 8px;
+    	font-size: 3.5rem;
+    	line-height:1.1rem !important;
+    	box-shadow: none !important;
+    	display: inline-block !important;}
+    #bottom .row {margin: 0;}
+    #bottom .row span {
+        box-sizing: border-box;
+        border-top: 0;
+    }
+    #bottom .row span.cheng {
+    	font-size: 2.1rem;
+    }
+    #bottom .row span.zero {
+        width: 50.1%;
+    }
+    
+    #updateApp {display: block;}
+    #downloadApp {display: none;}
+}
+.updateAppIconRotate {
+	display: inline-block;
+	animation: update .5s linear infinite;
+}
+@-webkit-keyframes name{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
+}
+@-moz-keyframes name{
+	from{}
+	to{}
+}
+@keyframes update{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
+}
