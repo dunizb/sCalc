@@ -294,7 +294,7 @@ function clickFunc(){
         	delBtn.style.display = "none";
             historyBox.children[0].children[0].innerHTML = "<div style='padding:5px;color:#000;'>"
             	+ "<p><i class='iconfont'>&#xe608;</i> 纯HTML、CSS、JS编写</p>"
-            	+ "<p><i class='iconfont'>&#xe608;</i> 该计算器布局使用Flex布局</p>"
+            	+ "<p><i class='iconfont'>&#xe608;</i> 该计算器布局使用CSS3 FlexBox布局</p>"
                 + "<p><i class='iconfont'>&#xe608;</i> 移动APP使用HBuild构建</p>"
                 + "<p><i class='iconfont'>&#xe608;</i> 在APP上，当输入手机号码后长按等于号可以拨打手机号码</p>"
                 + "<p><i class='iconfont'>&#xe608;</i> 在APP上，左滑右滑可以切换单手模式</p>"
