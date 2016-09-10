@@ -2,7 +2,7 @@
 A simple calculator,一个简易计算器
 
 1. 纯HTML、CSS、JS编写
-2. 该计算器布局使用Flex布局
+2. 该计算器布局使用CSS3 FlexBox布局
 3. 移动APP使用HBuild构建
 4. 在APP上，当输入手机号码后长按等于号可以拨打手机号码
 5. 左滑右滑可以切换单手模式
