@@ -18,7 +18,11 @@ A simple calculator,一个简易计算器
 
 ## 版本
 + [网页版](http://duni.sinaapp.com/demo/demos/%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E8%AE%A1%E7%AE%97%E5%99%A8/)
-+ [下载安卓APP（v3.1.0）](http://dunizb.b0.upaiyun.com/demo/app/myCalc-3.1.0.apk)
++ 手机网页版请扫码下面二维码（左）
++ [下载安卓APP（v3.1.0）](http://dunizb.b0.upaiyun.com/demo/app/myCalc-3.1.0.apk) 扫码下面二维码（右）
+
+![手机网页版](http://dunizb.b0.upaiyun.com/p/webapp-qrcode.png)
+![手机App](http://dunizb.b0.upaiyun.com/p/app-qrcode.png)
 
 ## 效果图
 | 主页1-灰白主题 | 主页2-黑暗主题 | 单手模式（左） |
