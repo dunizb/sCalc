@@ -17,7 +17,7 @@ A simple calculator,一个简易计算器
 介绍文章：[纯HTML+CSS+JavaScript编写的计算器应用](http://www.imooc.com/article/13009)
 
 ## 版本
-+ [网页版](http://duni.sinaapp.com/demo/javascript/%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E8%AE%A1%E7%AE%97%E5%99%A8/)
++ [网页版](http://duni.sinaapp.com/demo/demos/%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E8%AE%A1%E7%AE%97%E5%99%A8/)
 + [下载安卓APP（v3.1.0）](http://dunizb.b0.upaiyun.com/demo/app/myCalc-3.1.0.apk)
 
 ## 效果图
