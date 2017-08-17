@@ -37,3 +37,6 @@ A simple calculator,一个简易计算器
 
 - [ ] 重构
 - [ ] 浮点数计算精度丢失问题
+
+## 更新记录
+[update.md](UPDATE.md)
