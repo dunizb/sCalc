@@ -10,7 +10,7 @@ A simple calculator,一个简易计算器
 5. 左滑右滑可以切换单手模式
 6. 内置两套主题可切换
 
-作者/网络ID：Dunizb，博客：http://duni.sinaapp.com
+作者/网络ID：Dunizb，博客：http://dunizb.com
 
 ※Build 20160812224616.1510 Version：3.1.0
 
