@@ -1,5 +1,7 @@
 # sCalc
 
+[![](https://badge.juejin.im/entry/57c8f5d02e958a0068cc7a7b/likes.svg?style=flat)](https://juejin.im/entry/57c8f5d02e958a0068cc7a7b/detail)
+
 ## 功能说明
 A simple calculator,一个简易计算器
 
